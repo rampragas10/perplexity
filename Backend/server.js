@@ -1,0 +1,35 @@
+import "dotenv/config";
+import app from "./src/app.js";
+import http from "http";
+import connectDB from "./src/config/database.js";
+import { initSocket } from "./src/sockets/server.socket.js";
+import path from "path";
+
+const __dirname = path.resolve();
+
+const PORT = process.env.PORT || 8000;
+
+
+
+// make ready for deployment
+if (config.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (_, res) => {
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
+
+const httpServer = http.createServer(app);
+
+initSocket(httpServer);
+
+connectDB()
+    .catch((err) => {
+        console.error("MongoDB connection failed:", err);
+        process.exit(1);
+    });
+
+httpServer.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
