@@ -2,8 +2,7 @@
   "name": "fullstack-app",
   "version": "1.0.0",
   "scripts": {
-    "build": "npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend",
+    "build": "cd Frontend && npm install && npm run build && cd ../Backend && npm install",
     "start": "node Backend/server.js"
-  },
-  "keywords": []
+  }
 }
