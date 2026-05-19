@@ -4,15 +4,16 @@ import http from "http";
 import connectDB from "./src/config/database.js";
 import { initSocket } from "./src/sockets/server.socket.js";
 import path from "path";
+import express from "express";
+
 
 const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 8000;
 
 
-
 // make ready for deployment
-if (config.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   app.get("*", (_, res) => {
