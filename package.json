@@ -1,13 +1,9 @@
 {
-  "name": "perplexity",
+  "name": "fullstack-app",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "build": "npm install --prefix Backend && npm install --prefix Frontend && npm run build --prefix Frontend",
+    "build": "npm install --prefix Frontend && npm run build --prefix Frontend && npm install --prefix Backend",
     "start": "node Backend/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": ""
+  "keywords": []
 }
