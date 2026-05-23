@@ -48,17 +48,28 @@ import { initSocket } from "./src/sockets/server.socket.js";
 import path from "path";
 import express from "express";
 
-const __dirname = path.resolve();
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 5000;
 
 try {
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "../Frontend/dist")));
+//     app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
-});
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
+// });
+
+ const distPath = path.join(__dirname, "../Frontend/dist");
+
+  app.use(express.static(distPath));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
+  });
   }
 
   const httpServer = http.createServer(app);
