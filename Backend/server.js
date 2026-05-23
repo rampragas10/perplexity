@@ -5,6 +5,7 @@ import connectDB from "./src/config/database.js";
 import { initSocket } from "./src/sockets/server.socket.js";
 import path from "path";
 import express from "express";
+import { fileURLToPath } from "url";
 
 
 const __dirname = path.resolve();

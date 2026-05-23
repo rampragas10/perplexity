@@ -60,6 +60,5 @@ uploads/
 *.pid.lock
 
 # optional lock files
-package-lock.json
 yarn.lock
 pnpm-lock.yaml
