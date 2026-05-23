@@ -66,10 +66,9 @@ try {
  const distPath = path.join(__dirname, "../Frontend/dist");
 
   app.use(express.static(distPath));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(distPath, "index.html"));
-  });
+app.get(/.*/, (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
   }
 
   const httpServer = http.createServer(app);
@@ -78,7 +77,7 @@ try {
 
   connectDB()
     .then(() => {
-      httpServer.listen(PORT, () => {
+      httpServer.listen(PORT, "0.0.0.0", () => {
         console.log(`Server running on port ${PORT}`);
       });
     })
