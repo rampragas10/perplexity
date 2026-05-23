@@ -50,15 +50,15 @@ import express from "express";
 
 const __dirname = path.resolve();
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 5000;
 
 try {
   if (process.env.NODE_ENV === "production") {
-    app.use(express.static(path.join(__dirname, "Frontend/dist")));
+    app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 
-    app.get("*", (_, res) => {
-      res.sendFile(path.join(__dirname, "Frontend", "dist", "index.html"));
-    });
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"));
+});
   }
 
   const httpServer = http.createServer(app);
