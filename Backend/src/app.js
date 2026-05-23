@@ -19,9 +19,9 @@ app.use(cors({
 }))
 
 // Health check
-app.get("/", (req, res) => {
-    res.json({ message: "Server is running" });
-});
+// app.get("/", (req, res) => {
+//     res.json({ message: "Server is running" });
+// });
 
 app.use("/api/auth", authRouter);
 app.use("/api/chats", chatRouter);
